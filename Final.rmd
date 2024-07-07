@@ -44,12 +44,16 @@ males=filter(FinalData,FinalData$sex=="M")
 barchartGC(~treatment + infected,data=males) 
 barchartGC(~infected + treatment,data=males,type="percent")
 ```
-
+ 
+ This shows that males who got the vaccine are less likely to get covid than people who the placcebo. 
 
 ### Numerical 
-
-
-
+```{r}
+table1 <- xtabs(~treatment + infected, data=males)
+rowPerc(table1)
+colPerc(table1)
+```
+  This shows that 74% of males who took the palcebo got covid19, as were 26% males got covid19
 
 
 ### Inferential Results 
