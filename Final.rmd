@@ -30,11 +30,27 @@ $H_A$  The Covid921 vavccine is not effective in females
 
 ### Methods 
 
+Treatment is cat   
+sex is cat 
+helper file we are using is CAT- CAT 
+
 
 ### Description Results 
+
+
 ### Graphical Results 
+```{r}
+males=filter(FinalData,FinalData$sex=="M")
+barchartGC(~treatment + infected,data=males) 
+barchartGC(~infected + treatment,data=males,type="percent")
+```
+
 
 ### Numerical 
+
+
+
+
 
 ### Inferential Results 
 
@@ -58,8 +74,8 @@ $H_A$  The Covid921 vavccine is not effective in females
 
 
 ## Druggies
-$H_0$: The Covid921 vaccine is not effetive in males    
-$H_A$  The Covid921 vavccine is not effective in females 
+$H_0$: The Covid921 vaccine is not effetive in drug users.    
+$H_A$  The Covid921 vavccine is not effective in drug users.  
 
 
 # Overall Results and Conclusions
