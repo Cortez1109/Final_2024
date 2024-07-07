@@ -57,6 +57,15 @@ colPerc(table1)
 
 
 ### Inferential Results 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+
+
+
 
 
 ### Conclusion 
@@ -64,6 +73,7 @@ colPerc(table1)
 
 
 ## Females
+
 ## Males
 $H_0$: The Covid921 vaccine is not effective in males    
 $H_A$  The Covid921 vavccine is not effective in females 
