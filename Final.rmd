@@ -24,45 +24,36 @@ mutate(across(where(is.character), as.factor))
 # Introduction
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
-$H_0$ The COVID vaccine has no effect on people in different subgroups.
-$H_A$ The COVID vaccine does have an effect on people different subgroups.
+### Males
+$H_0$ The COVID vaccine has no effect in males 
+$H_A$ The COVID vaccine is effective in males.
 
 ## Methods 
+Treatment is a catergorical veriable 
+Infected is a catergorial valriable. 
+Cat~Cat is the file nI used to receive data. 
 
-This statistical analysis we will be using is catergorical ~ categorical, because the COVID vaccine should be effective among subgroups
-The method we will be using to display the data us a bar chart, cross table, and chisq test
-
-### Males
-
-## Results
-
-```{r}
-maleData = filter (FinalData,sex == "M")
-```
 ## Descriptive Results
+
 
 ### Graphical Descriptive 
 
 ```{r}
-barchartGC(~infected+treatment,data=maleData)
-barchartGC(~infected+treatment,data=maleData, type="percent")
+males=filter(FinalData,FinalData$sex=="M")
+barchartGC(~treatment + infected, data=males)
+barchartGC(~infected +treatment, data=males,type="percent")
+
 ```
-
-Based on the graph, it is showing us that the group of people who contracted COVID and the ones who received the vaccine had less symptoms than those that received the placebo, while the all male group that didn't contract COVID showed no difference between those who were vaccinated and unvaccinated. 
-
+  Based on the graph, it is showing us that the group of males who  took the vaccine are less likely to contract COVID than the ones who received the placebo. 
 
 ### Numerical Descriptive
 ```{r}
-table1 <- xtabs(~infected + treatment, data=maleData)
+table1 <- xtabs(~treatment +infected, data=males)
 rowPerc(table1)
 colPerc(table1)
 ```
 
-This table is showing that 69.57% of the unvaccinated male group experienced symptoms while only 30.43% of the vaccinated males experienced symptoms. It is also telling us that the male placebo group, 2.55% of them contracted COVID while only 1.15% of the vaccinated group contracted COVID.
- 
-
-Based on the graph, it is showing us that the group of people who contracted COVID and the ones who received the vaccine had less symptoms than those that received the placebo, while the all male group that didn't contract COVID showed no difference between those who were vaccinated and unvaccinated. 
-
+  This table is showing that 74% of the males who experienced the placebo got Covid19. While only 26% of those who got the vaccines contacted the virus. 
 
 ### Inferential Results
 ```{r}
@@ -71,10 +62,39 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
+The p-value for the chi-square test is 0.000000000000002, and Fisher's exact test provides a p-value of 0.0000000000000002 So we reject the null hypothesis. 
 
-The p-value is 0.0000000000001098, concluding that the p value is so small that we are rejecting the null hypothesis. Showing that COVID vaccine is effective between the male subgroup.
-Based on the Fisher exact test, we got a p-value of 0.0000000000004631 concluding this is giving a strong basis for the observed association between variables meaning we are rejecting the null hypothesis. The odds in this fisher test are showing males have a 2.24% chance of the events odds happening in one group gicing more evidence to the positive association of the variables.
+The odds ratio of 28.1:1 indicates that people who took the placebo are 28.1 times more likely to contract COVID-19 compared to thoes who got the vaccine. 
+
+### Conclusion
+ The graph demonstrates that men who were vaccinated had a significantly lower risk of contracting COVID -19 compared to those who received the placebo. The data reveals that 74% of males who took the placebo contracted Covid-19, whereas only 26% of males who received the vaccine contacted the virus. The chi-square test shows a p-value 0.0000000000000002, and Fisher's exact test has the p value of 0.000000000000000002,both of which are well below 0.05 , indicating significant results. the odds ratio of 2.8:1 suggests that those who took the placebo are 28.1 times more likely to contract COVID-19 compared to those who received the vaccine.  
+ 
+ 
+ 
+
 # Females
+$H_0$ The COVID vaccine has no effect in females 
+$H_A$ The COVID vaccine is effective in females.
+
+## Methods 
+Treatment is a categorical veriable  
+Sex ( females )is a categorical variable  
+Cat~Cat is the file nI used to receive data. 
+
+## Descriptive Results
+
+
+### Graphical Descriptive 
+
+```{r}
+females=filter(FinalData,FinalData$sex=="M")
+barchartGC(~treatment + infected, data=females)
+barchartGC(~infected +treatment, data=females,type="percent")
+
+```
+  This shows that females that received the vaccine are less likley to get Covid than people who got the placebo. 
+
+
 
 ## Results
 
@@ -94,7 +114,7 @@ barchartGC(~infected+treatment,data=femaleData, type="percent")
 ```
 
 
-This graph is showing that from the all female group who contracted COVID, the ones who received the vaccine had less symptoms than those with the placebo while the all the female group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated. 
+  This graph is showing that from the all female group who contracted COVID, the ones who received the vaccine had less symptoms than those with the placebo while the all the female group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated. 
 ### Numerical Descriptive
 ```{r}
 table2 <- xtabs(~infected + treatment, data=femaleData)
@@ -103,7 +123,7 @@ colPerc(table2)
 ```
 
 
-The data from this table shows that from the female group that were infected with COVID 19, those who were unvaccinated, 60% of them experienced symptoms while only 40% of the female group who were vaccinated experienced symptoms. It is also showing that within the female placebo group, 2.04% were infected with COVID, while only 1.37% of the vaccinated group contracted COVID.
+  The data from this table shows that from the female group that were infected with COVID 19, those who were unvaccinated, 60% of them experienced symptoms while only 40% of the female group who were vaccinated experienced symptoms. It is also showing that within the female placebo group, 2.04% were infected with COVID, while only 1.37% of the vaccinated group contracted COVID.
 
 
 ### Inferential Results
@@ -113,7 +133,7 @@ chisqtestGC(table2)
 fisher.test(table2)
 ```
 
-Based on this chisq test, the p-value is 0.0002732, showing that there is a significant difference, concluding that we are rejecting the null hypothesis. This means that the COVID vaccine is effective within the female subgroup. 
+  Based on this chisq test, the p-value is 0.0002732, showing that there is a significant difference, concluding that we are rejecting the null hypothesis. This means that the COVID vaccine is effective within the female subgroup. 
 For the fisher exact test show that the odds are about 1.50%, suggesting that there is a significant correlation between the variables, showing that there is strong evidence directing that we are rejecting the null hypothesis. 
 ###LGBTQ
 
@@ -131,7 +151,7 @@ barchartGC(~infected+treatment,data=LGBTQData)
 barchartGC(~infected+treatment,data=LGBTQData, type="percent")
 ```
 
-This graph is showing that within the LGBTQ subgroup, those who got COVID and got vaccinated experienced significantly more symptoms than those their unvaccinated counterpart. Those who did not get COVID and were both vaccinated and unvaccinated did not show any difference.
+  This graph is showing that within the LGBTQ subgroup, those who got COVID and got vaccinated experienced significantly more symptoms than those their unvaccinated counterpart. Those who did not get COVID and were both vaccinated and unvaccinated did not show any difference.
 
 ### Numerical Descriptive
 
@@ -141,7 +161,7 @@ rowPerc(table3)
 colPerc(table3)
 ```
 
-This table is showing that within the LGBTQ placebo group they experienced 15.38% of symptoms while the the vaccinated group experienced 84.62% of syptoms. It is also showing that 0.66% of the LGBTQ group who had the placebo contracted COVID, while 3.54% of the vaccinated group contracted COVID.
+  This table is showing that within the LGBTQ placebo group they experienced 15.38% of symptoms while the the vaccinated group experienced 84.62% of syptoms. It is also showing that 0.66% of the LGBTQ group who had the placebo contracted COVID, while 3.54% of the vaccinated group contracted COVID.
 
 ### Inferential Results
 ```{r}
@@ -150,7 +170,7 @@ chisqtestGC(table3)
 fisher.test(table3)
 ```
 
-The chisq test shows that the p-value for the LGBTQ group is 0.0000006668 showing that there is an effect between the COVID vaccine and the LGBT subgroup, concluding that we are rejecting the null hypothesis.  
+  The chisq test shows that the p-value for the LGBTQ group is 0.0000006668 showing that there is an effect between the COVID vaccine and the LGBT subgroup, concluding that we are rejecting the null hypothesis.  
 In the fisher exact test, the percentage odds ratio is about 0.18%, showing that the odds are about 0.18 times lower in one variable group compared to the other, showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
 # Druggies
 
