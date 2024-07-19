@@ -92,6 +92,9 @@ barchartGC(~treatment + infected, data=females)
 barchartGC(~infected +treatment, data=females,type="percent")
 
 ```
+  
+  
+  
   This shows that females that received the vaccine are less likley to get Covid than people who got the placebo. 
 
 
