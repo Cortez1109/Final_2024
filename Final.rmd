@@ -95,7 +95,7 @@ barchartGC(~infected +treatment, data=females,type="percent")
   
   
   
-  This shows that females that received the vaccine are less likley to get Covid than people who got the placebo. 
+  This shows that females that received the vaccine are less likely to get Covid than people who got the placebo. 
 
 
 
@@ -125,10 +125,9 @@ rowPerc(table2)
 colPerc(table2)
 ```
 
-
-  The data from this table shows that from the female group that were infected with COVID 19, those who were unvaccinated, 60% of them experienced symptoms while only 40% of the female group who were vaccinated experienced symptoms. It is also showing that within the female placebo group, 2.04% were infected with COVID, while only 1.37% of the vaccinated group contracted COVID.
-
-
+  The data from this table shows that from the female group that took the placebo were infected 65% with COVID 19, females that got the vaccine had 35% got COVID. 
+  
+  
 ### Inferential Results
 ```{r}
 chisq.test(table2)
@@ -136,35 +135,47 @@ chisqtestGC(table2)
 fisher.test(table2)
 ```
 
-  Based on this chisq test, the p-value is 0.0002732, showing that there is a significant difference, concluding that we are rejecting the null hypothesis. This means that the COVID vaccine is effective within the female subgroup. 
-For the fisher exact test show that the odds are about 1.50%, suggesting that there is a significant correlation between the variables, showing that there is strong evidence directing that we are rejecting the null hypothesis. 
-###LGBTQ
+  Based on this chisq test, the p-value is 0.00000002, showing that there is a significant difference, concluding that we are rejecting the null hypothesis. 
+For the fisher exact test the p-value is 0.00000001. This is lower than 0.05 so we reject the null. 
 
-### Results
+The odd ratio is a 1.85:1 this shows that females that took the placebo are 1.86 less likely to contract COVID-19 compared to those that were vaccinated.
+
+###LGBTQ
+$H_0$ The COVID vaccine has no effect in LGBTQ 
+$H_A$ The COVID vaccine is effective in LGBTQ.
+
+## Methods 
+Treatment is a categorical veriable  
+Sex ( LGBTQ )is a categorical variable  
+Cat~Cat is the file used to receive data. 
+
+## Descriptive Results
+
+### Graphical Descriptive
+
+
 ```{r}
 LGBTQData = filter (FinalData,LGBTQ == "gay")
 ```
 
-## Descriptive Results
-
-### Graphical Descriptive 
 
 ```{r}
 barchartGC(~infected+treatment,data=LGBTQData)
 barchartGC(~infected+treatment,data=LGBTQData, type="percent")
 ```
 
-  This graph is showing that within the LGBTQ subgroup, those who got COVID and got vaccinated experienced significantly more symptoms than those their unvaccinated counterpart. Those who did not get COVID and were both vaccinated and unvaccinated did not show any difference.
-
+  This graph is showing that within the LGBTQ subgroup who were vaccinated have a low risk of getting COVID -19  compared to those who got the placebo. 
+  
+  
 ### Numerical Descriptive
 
 ```{r}
-table3 <- xtabs(~infected + treatment, data=LGBTQData)
+table3 <- xtabs(~ treatment  + infected, data=LGBTQData)
 rowPerc(table3)
 colPerc(table3)
 ```
 
-  This table is showing that within the LGBTQ placebo group they experienced 15.38% of symptoms while the the vaccinated group experienced 84.62% of syptoms. It is also showing that 0.66% of the LGBTQ group who had the placebo contracted COVID, while 3.54% of the vaccinated group contracted COVID.
+  This table is showing that within the LGBTQ placebo group they experienced 80% of symptoms while the the vaccinated group experienced 20%. of syptoms. 
 
 ### Inferential Results
 ```{r}
