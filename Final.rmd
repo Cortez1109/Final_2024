@@ -71,7 +71,6 @@ The odds ratio of 28.1:1 indicates that people who took the placebo are 28.1 tim
  The graph demonstrates that men who were vaccinated had a significantly lower risk of contracting COVID -19 compared to those who received the placebo. The data reveals that 74% of males who took the placebo contracted Covid-19, whereas only 26% of males who received the vaccine contacted the virus. The chi-square test shows a p-value 0.0000000000000002, and Fisher's exact test has the p value of 0.000000000000000002,both of which are well below 0.05 , indicating significant results. the odds ratio of 2.8:1 suggests that those who took the placebo are 28.1 times more likely to contract COVID-19 compared to those who received the vaccine.  
  
  
- 
 
 # Females
 $H_0$ The COVID vaccine has no effect in females  
@@ -86,6 +85,9 @@ Cat~Cat is the file nI used to receive data.
 
 
 ### Graphical Descriptive 
+```{r}
+femaleData = filter (FinalData,sex == "F")
+```
 
 ```{r}
 females=filter(FinalData,FinalData$sex=="M")
@@ -98,27 +100,6 @@ barchartGC(~infected +treatment, data=females,type="percent")
   
   This shows that females that received the vaccine are less likely to get Covid than people who got the placebo. 
 
-
-
-## Results
-
-
-```{r}
-femaleData = filter (FinalData,sex == "F")
-```
-
-
-## Descriptive Results
-
-### Graphical Descriptive 
-
-```{r}
-barchartGC(~infected+treatment,data=femaleData)
-barchartGC(~infected+treatment,data=femaleData, type="percent")
-```
-
-
-  This graph is showing that from the all female group who contracted COVID, the ones who received the vaccine had less symptoms than those with the placebo while the all the female group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated. 
 ### Numerical Descriptive
 ```{r}
 table2 <- xtabs(~infected + treatment, data=femaleData)
@@ -140,6 +121,13 @@ fisher.test(table2)
 For the fisher exact test the p-value is 0.00000001. This is lower than 0.05 so we reject the null. 
 
 The odd ratio is a 1.85:1 this shows that females that took the placebo are 1.86 less likely to contract COVID-19 compared to those that were vaccinated.
+
+### Conclusion
+ The findings indicate that females who received the vaccine have a lower risk of contracting Covid-19 compared to those who received the placebo. According to the data presented in the table, 65% of females in the placebo group were infected with Covid-19, whereas among those who received the vaccine, 35% were infected. The chi-square test yielded a p-value of 0.00000002, indicating a significant difference and leading to rejection of the null hypothesis.
+
+Similarly, the Fisher exact test resulted in a p-value of 0.00000001, which is below the typical significance level of 0.05, also supporting rejection of the null hypothesis.
+
+The odds ratio of 1.85:1 suggests that females in the placebo group are 1.85 times more likely to contract Covid-19 compared to those who were vaccinated.
 
 ### LGBTQ  
 
@@ -191,6 +179,10 @@ fisher.test(table3)
 In the fisher exact test, p-value is 0.00000007 also lower than 0.05
 showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
 
+### Conclusion
+The graph indicates that LGBTQ individuals who received the vaccine have a significantly lower risk of contracting Covid-19 compared to those who received the placebo. According to the table, 80% of the LGBTQ placebo group experienced symptoms, whereas only 20% of the vaccinated group experienced symptoms. The chi-square test resulted in a p-value of 0.000002, which is less than 0.05, leading to rejection of the null hypothesis.
+
+Similarly, the Fisher exact test yielded a p-value of 0.00000007, also below the significance level of 0.05, indicating a notable difference between the two groups and supporting rejection of the null hypothesis within this subgroup.
 
 # Druggies 
 
@@ -225,6 +217,7 @@ table4 <- xtabs(~ treatment + infected, data=DruggiesData)
 rowPerc(table4)
 colPerc(table4)
 ```
+
 This table is showing that within the placebo drug user group, they experience 8.33% symptoms while the vaccinated group experienced 91.67% of symptoms. 
 
 
@@ -240,19 +233,11 @@ The chisq test shows that the p-value is 0.0000000001. Which is lower 0.05 concl
 In the fisher exact test, p-value is 0.000000000003 also lower than 0.05
 showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
 
+The odd ratio 0.087:1, the drug user that used the palcebo is 0.08 less likely then the one who took the vaccine. 
 
-# Overall Results and Conclusions
+### Conclusion 
+This graph illustrates that among drug users, those who received the placebo were more likely to contract COVID-19 compared to those who received the vaccine. According to the table, within the placebo group of drug users, 8.33% experienced symptoms, while 91.67% of the vaccinated group experienced symptoms.
 
-In conclusion, the effectiveness of the COVID vaccine varies between subgroups. Staring with the all male group, we are rejecting the null hypothesis. Based on the bar chart, numerical graph, and the chisq and fisher tests, we can conclude that men who received the COVID vaccine and contracted it ultimately experience less symptoms than those who received the placebo. The men that did not get vaccinated and did not contract COVID showed little to no difference between eachother. In the group that did receive the placebo had an infection rate of 2.55%, and those of them who got the vaccine had an infection rate of 1.15%, showing that the vaccine is effective in men, therefore we are rejecting the null hypothesis for the male group. 
+The chi-square test yielded a p-value of 0.0000000001, indicating a significant difference and leading to the rejection of the null hypothesis (p < 0.05). Similarly, the Fisher exact test resulted in a p-value of 0.000000000003, further supporting the rejection of the null hypothesis, demonstrating a clear distinction between the two groups within this context.
 
-Moving onto the all female group, we are also rejecting the null hypothesis. Based on all of the tests we have run, we can conclude that women who received the COVID vaccine and contracted it also experienced less symptoms than the women who received the placebo. The female group that did not get vaccinated and did not contract COVID also showed little to no difference compared to each other. Within the group that did receive the placebo, they had an infection rate of 2.04%. The group that received the vaccine had an infection rate of 1.37%, concluding that the vaccine is effective in women, therefore rejecting the null hypothesis for the female subgroup.
-
-Comparing the male and female subgroups, women had a smaller percentage of infection with the COVID vaccine and placebo than then men by 0.22% and 0.51%. It is not a big difference, but so far within the data analysis women experience less symptoms with the COVID vaccine. 
-
-In the LGBTQ subgroup, we are rejecting the null hypothesis. Based on our tests, we can conclude that the COVID vaccine is effective in this subgroup, but negatively. We found out that the LGBTQ people who received the COVID vaccine and contracted it experienced significant symptoms than those who received the placebo. The LGBTQ group that did not get vaccinated and did not contract COVID were almost exactly the same, showing no difference. In the LGBTQ group that did receive the placebo had an infection rate of 0.66% and those who did receive the vaccine had an infection rate of 3.54%, a very significant difference between the two, therefore rejecting the null hypothesis since the vaccine had an effect on the group.
-
-Finally, for the drug user group, they received the same result as the LGBTQ subgroup. We are rejecting the null hypothesis due to the drug users experiencing significantly more symptoms than the placebo group, showing that the COVID vaccine did have an effect, but not a positive one In the group of drug users that were vaccinated and contracted COVID, they had a 3.06% infection rate. The placebo group had a 0.4% infection rate showing a very big difference between the two and how much symptoms each group got, once again, we are rejecting the null.
-
-Comparing all of the tests from most positive COVID affects to the more negative COVID affects, the female had the best results with the COVID vaccine, while the LGBTQ subgroup had it the worst, experiencing the most symptoms while having COVID even with the vaccine. Males had almost the same results as the females, just a little less and drug users had fewer symptoms by only 0.48%. I would recommend that only males and females that are not drug users or LGBTQ to get the COVID vaccine since the effect was more positive than it was for the other two subgroups. 
-
-
+The odds ratio of 0.087:1 indicates that drug users who received the placebo were 0.087 times less likely to contract COVID-19 compared to those who received the vaccine.
