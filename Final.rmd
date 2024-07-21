@@ -25,13 +25,13 @@ mutate(across(where(is.character), as.factor))
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
 ### Males
-$H_0$ The COVID vaccine has no effect in males 
-$H_A$ The COVID vaccine is effective in males.
+$H_0$ The COVID vaccine has no effect in males   
+$H_A$ The COVID vaccine is effective in males.  
 
 ## Methods 
-Treatment is a catergorical veriable 
-Infected is a catergorial valriable. 
-Cat~Cat is the file nI used to receive data. 
+Treatment is a catergorical veriable   
+Infected is a catergorial valriable.  
+Cat~Cat is the file nI used to receive data.  
 
 ## Descriptive Results
 
@@ -73,8 +73,8 @@ The odds ratio of 28.1:1 indicates that people who took the placebo are 28.1 tim
  
 
 # Females
-$H_0$ The COVID vaccine has no effect in females 
-$H_A$ The COVID vaccine is effective in females.
+$H_0$ The COVID vaccine has no effect in females  
+$H_A$ The COVID vaccine is effective in females  
 
 ## Methods 
 Treatment is a categorical veriable  
@@ -141,13 +141,13 @@ For the fisher exact test the p-value is 0.00000001. This is lower than 0.05 so 
 The odd ratio is a 1.85:1 this shows that females that took the placebo are 1.86 less likely to contract COVID-19 compared to those that were vaccinated.
 
 ###LGBTQ
-$H_0$ The COVID vaccine has no effect in LGBTQ 
-$H_A$ The COVID vaccine is effective in LGBTQ.
+$H_0$ The COVID vaccine has no effect in LGBTQ  
+$H_A$ The COVID vaccine is effective in LGBTQ  
 
 ## Methods 
 Treatment is a categorical veriable  
-Sex ( LGBTQ )is a categorical variable  
-Cat~Cat is the file used to receive data. 
+Sex ( LGBTQ )is a categorical variable    
+Cat~Cat is the file used to receive data  
 
 ## Descriptive Results
 
@@ -175,7 +175,7 @@ rowPerc(table3)
 colPerc(table3)
 ```
 
-  This table is showing that within the LGBTQ placebo group they experienced 80% of symptoms while the the vaccinated group experienced 20%. of syptoms. 
+  This table is showing that within the LGBTQ placebo group they experienced 80% of symptoms while the the vaccinated group experienced 20% of symptoms. 
 
 ### Inferential Results
 ```{r}
@@ -184,33 +184,48 @@ chisqtestGC(table3)
 fisher.test(table3)
 ```
 
-  The chisq test shows that the p-value for the LGBTQ group is 0.0000006668 showing that there is an effect between the COVID vaccine and the LGBT subgroup, concluding that we are rejecting the null hypothesis.  
-In the fisher exact test, the percentage odds ratio is about 0.18%, showing that the odds are about 0.18 times lower in one variable group compared to the other, showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
-# Druggies
+  The chisq test shows that the p-value is 0.000002. Which is lower 0.05 concluding that we are rejecting the null hypothesis.  
 
-## Results
+In the fisher exact test, p-value is 0.00000007 also lower than 0.05
+showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
+
+
+# Druggies 
+
+$H_0$ The COVID vaccine has no effect in Drug User      
+$H_A$ The COVID vaccine is effective in Drug User    
+
+## Methods 
+Treatment is a categorical veriable    
+Sex (Drug User)is a categorical variable     
+Cat~Cat is the file used to receive data   
+
+## Descriptive Results
+
+### Graphical Descriptive
+
 
 ```{r}
 DruggiesData = filter(FinalData, DrugUser == "yes")
 ```
-## Descriptive Results
 
-### Graphical Descriptive 
 
 ```{r}
 barchartGC(~infected+treatment,data=DruggiesData)
 barchartGC(~infected+treatment,data=DruggiesData, type="percent")
 ```
 
-This graph us showing that from the drug user group who contracted COVID, the ones who received the vaccine had more symptoms than those with the placebo while drug user group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated.
+This graph us showing that from the drug user group that took the placebo were less likely to get COVID, compared to the ones who received the vaccine. 
 
 ### Numerical Descriptive
 ```{r}
-table4 <- xtabs(~infected + treatment, data=DruggiesData)
+table4 <- xtabs(~ treatment + infected, data=DruggiesData)
 rowPerc(table4)
 colPerc(table4)
 ```
-This table is showing that within the placebo drug user group, they experience 11.67% of symptoms while the vaccinated group experienced 88.33% of symptoms. It is also showing that 0.4% of the placebo group contracted COVID, while 3.06% of the vaccinated drug user group contracted COVID. There is a significant difference and effect between the placebo and COVID vaccine.
+This table is showing that within the placebo drug user group, they experience 8.33% symptoms while the vaccinated group experienced 91.67% of symptoms. 
+
+
 ### Inferential Results
 ```{r}
 chisq.test(table4)
