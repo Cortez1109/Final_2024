@@ -31,7 +31,7 @@ $H_A$ The COVID vaccine is effective in males.
 ## Methods 
 Treatment is a catergorical veriable   
 Infected is a catergorial veriable.  
-Cat~Cat is the file nI used to receive data.  
+Cat~Cat is the file I used to capture the data.  
 
 ## Descriptive Results
 
@@ -45,7 +45,7 @@ barchartGC(~infected +treatment, data=males,type="percent")
 
 ```
 
-  Based on the graph, it is showing us that the group of males who  took the vaccine are less likely to contract COVID than the ones who received the placebo. 
+  Based on the graph, it is showing us that the group of males who took the vaccine are less likely to contract COVID than the ones who received the placebo. 
 
 ### Numerical Descriptive
 ```{r}
@@ -98,7 +98,7 @@ barchartGC(~infected +treatment, data=females,type="percent")
   
   
   
-  This shows that females that received the vaccine are less likely to get Covid than people who got the placebo. 
+  This shows that females that received the vaccine are less likely to get Covid19 than people who got the placebo. 
 
 ### Numerical Descriptive
 ```{r}
@@ -120,14 +120,14 @@ fisher.test(table2)
   Based on this chisq test, the p-value is 0.00000002, showing that there is a significant difference, concluding that we are rejecting the null hypothesis. 
 For the fisher exact test the p-value is 0.00000001. This is lower than 0.05 so we reject the null. 
 
-The odd ratio is a 1.85:1 this shows that females that took the placebo are 1.86 less likely to contract COVID-19 compared to those that were vaccinated.
+The odd ratio is a 1.85:1 this shows that females that took the placebo are 1.86 less likely to contract COVID19 compared to those that were vaccinated.
 
 ### Conclusion
- The findings indicate that females who received the vaccine have a lower risk of contracting Covid-19 compared to those who received the placebo. According to the data presented in the table, 65% of females in the placebo group were infected with Covid-19, whereas among those who received the vaccine, 35% were infected. The chi-square test yielded a p-value of 0.00000002, indicating a significant difference and leading to rejection of the null hypothesis.
+ The findings indicate that females who received the vaccine have a lower risk of contracting Covid19 compared to those who received the placebo. According to the data presented in the table, 65% of females in the placebo group were infected with Covid19, whereas among those who received the vaccine, 35% were infected. The chi-square test yielded a p-value of 0.00000002, indicating a significant difference and leading to rejection of the null hypothesis.
 
 Similarly, the Fisher exact test resulted in a p-value of 0.00000001, which is below the typical significance level of 0.05, also supporting rejection of the null hypothesis.
 
-The odds ratio of 1.85:1 suggests that females in the placebo group are 1.85 times more likely to contract Covid-19 compared to those who were vaccinated.
+The odds ratio of 1.85:1 suggests that females in the placebo group are 1.85 times more likely to contract Covid19 compared to those who were vaccinated.
 
 ### LGBTQ  
 
@@ -180,7 +180,7 @@ In the fisher exact test, p-value is 0.00000007 also lower than 0.05
 showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
 
 ### Conclusion
-The graph indicates that LGBTQ individuals who received the vaccine have a significantly lower risk of contracting Covid-19 compared to those who received the placebo. According to the table, 80% of the LGBTQ placebo group experienced symptoms, whereas only 20% of the vaccinated group experienced symptoms. The chi-square test resulted in a p-value of 0.000002, which is less than 0.05, leading to rejection of the null hypothesis.
+The graph indicates that LGBTQ individuals who received the vaccine have a significantly lower risk of contracting Covid19 compared to those who received the placebo. According to the table, 80% of the LGBTQ placebo group experienced symptoms, whereas only 20% of the vaccinated group experienced symptoms. The chi-square test resulted in a p-value of 0.000002, which is less than 0.05, leading to rejection of the null hypothesis.
 
 Similarly, the Fisher exact test yielded a p-value of 0.00000007, also below the significance level of 0.05, indicating a notable difference between the two groups and supporting rejection of the null hypothesis within this subgroup.
 
@@ -209,7 +209,7 @@ barchartGC(~infected+treatment,data=DruggiesData)
 barchartGC(~infected+treatment,data=DruggiesData, type="percent")
 ```
 
-This graph us showing that from the drug user group that took the placebo were less likely to get COVID, compared to the ones who received the vaccine. 
+  This graph us showing that from the drug user group that took the placebo were less likely to get COVID, compared to the ones who received the vaccine. 
 
 ### Numerical Descriptive
 ```{r}
@@ -218,7 +218,7 @@ rowPerc(table4)
 colPerc(table4)
 ```
 
-This table is showing that within the placebo drug user group, they experience 8.33% symptoms while the vaccinated group experienced 91.67% of symptoms. 
+  This table is showing that within the placebo drug user group, they experience 8.33% symptoms while the vaccinated group experienced 91.67% of symptoms. 
 
 
 ### Inferential Results
