@@ -240,4 +240,4 @@ This graph illustrates that among drug users, those who received the placebo wer
 
 The chi-square test yielded a p-value of 0.0000000001, indicating a significant difference and leading to the rejection of the null hypothesis (p < 0.05). Similarly, the Fisher exact test resulted in a p-value of 0.000000000003, further supporting the rejection of the null hypothesis, demonstrating a clear distinction between the two groups within this context.
 
-The odds ratio of 0.087:1 indicates that drug users who received the placebo were 0.087 times less likely to contract COVID-19 compared to those who received the vaccine.
+The odds ratio of 0.087:1 indicates that drug users who received the placebo were 0.087 times less likely to contract COVID-19 compared to those who received the vaccine. At the end of all , the vaccine is effective to Drugusers however they would get covid tenn those who took the palcebo. 
